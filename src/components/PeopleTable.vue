@@ -24,15 +24,19 @@ const peopleStore = usePeopleStore();
 <template>
     <div class="flex flex-row flex-wrap justify-content-center mt-4">
         <DataTable :value="people" tableStyle="min-width: 100rem">
-            <Column field="name" header="Name"></Column>
+            <Column field="name" header="Name">
+                <template #body="slotProps">
+                    <router-link :to="`people/${slotProps.data.id}`">{{slotProps.data.name}}</router-link>
+                </template>
+            </Column>
             <Column field="height" header="Height"></Column>
             <Column field="mass" header="Mass"></Column>
             <Column field="hair_color" header="Hair Color"></Column>
             <Column header="Action">
                 <template #body="slotProps">
                     <div class="flex flex-column">
-                        <Button @click="peopleStore.toggleFavorite(slotProps.data)" style="width: 300px" :label="slotProps.data.favorite ? 'удалить из избранное' : 'добавить в избранное'" class="mb-2"/>
-                        <Button @click="peopleStore.toggleLocalStorage(slotProps.data)" style="width: 300px" :label="slotProps.data.inLocal ? 'удалить из localStorage' : 'добавить в localStorage'" />
+                        <Button @click="peopleStore.toggleFavoriteDetail(slotProps.data)" style="width: 300px" :label="slotProps.data.favorite ? 'удалить из избранное' : 'добавить в избранное'" class="mb-2"/>
+                        <Button @click="peopleStore.toggleLocalStorageDetail(slotProps.data)" style="width: 300px" :label="slotProps.data.inLocal ? 'удалить из localStorage' : 'добавить в localStorage'" />
                     </div>
 
                 </template>
