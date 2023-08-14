@@ -35,8 +35,8 @@ const peopleStore = usePeopleStore();
             <Column header="Action">
                 <template #body="slotProps">
                     <div class="flex flex-column">
-                        <Button @click="peopleStore.toggleFavoriteDetail(slotProps.data)" style="width: 300px" :label="slotProps.data.favorite ? 'удалить из избранное' : 'добавить в избранное'" class="mb-2"/>
-                        <Button @click="peopleStore.toggleLocalStorageDetail(slotProps.data)" style="width: 300px" :label="slotProps.data.inLocal ? 'удалить из localStorage' : 'добавить в localStorage'" />
+                        <Button @click="peopleStore.toggleFavorite(slotProps.data)" style="width: 300px" :label="slotProps.data.favorite ? 'удалить из избранное' : 'добавить в избранное'" class="mb-2"/>
+                        <Button @click="peopleStore.toggleLocalStorage(slotProps.data)" style="width: 300px" :label="slotProps.data.inLocal ? 'удалить из localStorage' : 'добавить в localStorage'" />
                     </div>
 
                 </template>
